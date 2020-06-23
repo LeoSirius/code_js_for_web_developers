@@ -1,4 +1,4 @@
-// 对string，number和boolean。在调用这些类型的方法时，会自动创建一个临时的包装类型
+// 对string，number和boolean。在调用这些类型实例的方法时，会自动创建一个临时的包装类型
 var s1 = "leosirius";
 var s2 = s1.substr(0, 2);
 

@@ -19,7 +19,7 @@ var sun = function(num1, num2) {
 // -=-=-=-=-=-=-=-=-=-= 函数的内部属性 -=-=-=-=-=-=-=-=-=-=
 
 // arguments对象有个属性callee。指向拥有arguments对象的函数，即调用函数本身。
-// 用callee可以避免函数改名后的错误，降低耦合度
+// 递归时用callee可以避免函数改名后的错误，降低耦合度
 
 function factorial(num) {
   if (num <= 1)
@@ -80,8 +80,8 @@ function callSum2(num1, num2) {
   return sum.call(this, num1, num2);    // call后面的参数是分开写的
 }
 
-alert(callSum1(10, 20));   // 10
-alert(callSum2(10, 20));   // 10
+alert(callSum1(10, 20));   // 30
+alert(callSum2(10, 20));   // 30
 
 // -=-=-=-=-=-=-=-=-=-=
 // 下面利用call的第一个参数来指定函数的作用域
