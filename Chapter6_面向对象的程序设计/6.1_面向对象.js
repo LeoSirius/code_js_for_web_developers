@@ -76,5 +76,25 @@ var person1 = new Person();
 person1.sayName();    // leo
 
 var person2 = new Person();
+person2.name = 'siria';      // 给实例添加一个属性，会屏蔽原型对象中的同名属性
+person2.sayName();           // siria
+delete person2.name;         // 用delete删除后，则可以访问原型对象中的属性
+person2.sayName();           // leo
+
+// isPrototypeOf() 判断是否是实例的原型对象
+// getPrototypeOf() 返回实例的原型对象
+alert(Person.prototype.isPrototypeOf(person1));              // true
+alert(Object.getPrototypeOf(person1) === Person.prototype);   // true
+
+// hasOwnProperty判断属性是否是实例属性
+alert(person2.hasOwnProperty('name'));            // false
+
+// in 操作符，在对象能访问该属性时返回true，不论是否是原型属性还是实例属性
+alert('name' in person2);                         // true
+
+// 所有自定义属性都是可枚举的
+// keys()返回所有可枚举的实例属性
+// getOwnPropertyNames()返回所有实例属性
 person2.name = 'siria';
-person2.sayName();    // siria
+alert(Object.keys(person2));                  // name
+alert(Object.getOwnPropertyNames(person2));   // name
