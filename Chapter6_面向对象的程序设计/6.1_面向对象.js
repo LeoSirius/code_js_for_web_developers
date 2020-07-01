@@ -98,3 +98,37 @@ alert('name' in person2);                         // true
 person2.name = 'siria';
 alert(Object.keys(person2));                  // name
 alert(Object.getOwnPropertyNames(person2));   // name
+
+// -=-=-=-=-=-=-=-=-=-= 继承 -=-=-=-=-=-=-=-=-=-=
+
+// js中继承通过原型链实现，原型链的构建是通过将一个父类型实例赋值给子构造函数的原型实现的
+
+// -=-=-=-=-=-=-=-=-=-= 原型链
+// 正常情况下，构造函数有一个原型对象prototype，原型对象包含指向构造函数的指针contructor。
+// 实例也有一个指向原型对象的指针protytype。
+
+// SuperType有一个属性property和一个方法getSuperValue
+
+function SuperType() {
+  this.property = true;
+}
+
+SuperType.prototype.getSuperValue = function() {
+  return this.property;
+}
+
+// SubType也有一个属性和一个方法
+
+function SubType() {
+  this.subproperty = false;
+}
+
+SubType.prototype.getSubValue = function() {
+  return this.subproperty;
+}
+
+// 继承父类
+SubType.prototype = new SuperType();
+
+var instance = new SubType();
+alert(instance.getSuperValue());   // true， 调用父类中的方法
